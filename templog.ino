@@ -2,8 +2,8 @@
 #include <ESP8266HTTPClient.h>
 #include "Adafruit_Si7021.h"
 Adafruit_Si7021 sensor = Adafruit_Si7021();
-const char* ssid     = "Calcifer";
-const char* password = "~FatDogMan27Tacos~";
+const char* ssid     = "PLACEHOLDER";
+const char* password = "PLACEHOLDER";
 
 void setup() {
   // put your setup code here, to run once:
