@@ -6,26 +6,25 @@ const char* ssid     = "PLACEHOLDER";
 const char* password = "PLACEHOLDER";
 
 void setup() {
-  // put your setup code here, to run once:
   sensor.begin();
   
   WiFi.begin(ssid,password);
-  while (WiFi.status() != WL_CONNECTED ) {delay(500);} // forces the board to wait until the wifi is connected
+  while (WiFi.status() != WL_CONNECTED ) {delay(500);} // Forces the board to wait until the wifi is connected
 }
 
 void loop() {
  
-  if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
+  if (WiFi.status() == WL_CONNECTED) { //Checks WiFi connection status
  
-    HTTPClient http;  //Declare an object of class HTTPClient
-    float temp = (sensor.readTemperature() * 1.8) +32;
-    http.begin("192.168.1.203:5000/?temp=" + String(temp));  //Specify request destination
-    int httpCode = http.GET();                                  //Send the request
+    HTTPClient http;  //Declares an object of class HTTPClient
+    float temp = (sensor.readTemperature() * 1.8) +32; //Converts celcius to farenheit
+    http.begin("192.168.1.203:5000/?temp=" + String(temp));  //Address of linux box with DHCP reservation
+    int httpCode = http.GET();                                  //Sends the request
  
     if (httpCode > 0) { //Check the returning code
  
       String payload = http.getString();   //Get the request response payload
-      Serial.println(payload);             //Print the response payload
+      //Serial.println(payload);
  
     }
  
